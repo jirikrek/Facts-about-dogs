@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
                 for (Post post : all){
                     String content = "";
-                    content += "Text: " + post.getText()+"\n\n";
+                    content += "Fact: " + post.getText()+"\n\n";
 
                     textViewResult.append(content);
                 }
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                 for (RandomPost randomPost : index){
                     String content = "";
-                    content += "Text: " + randomPost.getText()+"\n\n";
+                    content += "Fact: " + randomPost.getText()+"\n\n";
 
                     textViewResult.append(content);
                 }
