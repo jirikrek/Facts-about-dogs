@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView textViewResult;
 
+    private JsonPlaceHolderApi jsonPlaceHolderApi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +26,17 @@ public class MainActivity extends AppCompatActivity {
         textViewResult = findViewById(R.id.text_view_result);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://dog-facts-api.herokuapp.com/api/v1/resources/dogs/")
+                .baseUrl("https://dog-facts-api.herokuapp.com/api/v1/resources/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+        jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
+        //getPosts();
+        getRandomPost();
+    }
+
+    private void getPosts(){
         Call<List<Post>> call = jsonPlaceHolderApi.getPosts();
 
         call.enqueue(new Callback<List<Post>>() {
@@ -60,4 +66,37 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private void getRandomPost(){
+
+        Call<List<RandomPost>> call = jsonPlaceHolderApi.getRandomPost(24);
+
+        call.enqueue(new Callback<List<RandomPost>>() {
+            @Override
+            public void onResponse(Call<List<RandomPost>> call, Response<List<RandomPost>> response) {
+
+                if(!response.isSuccessful()) {
+                    textViewResult.setText("Code: " + response.code());
+                    return;
+                }
+
+                List<RandomPost> index = response.body();
+
+                for (RandomPost randomPost : index){
+                    String content = "";
+                    content += "Text: " + randomPost.getText()+"\n\n";
+
+                    textViewResult.append(content);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<RandomPost>> call, Throwable t) {
+                textViewResult.setText(t.getMessage());
+            }
+        });
+
+    }
+
 }
