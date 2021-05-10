@@ -1,10 +1,14 @@
 package com.example.factsaboutdogs;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -15,8 +19,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textViewResult;
+    private static final String TAG = "MainActivity";
 
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private TextView textViewResult;
     private JsonPlaceHolderApi jsonPlaceHolderApi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +39,18 @@ public class MainActivity extends AppCompatActivity {
 
         jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
-        //getPosts();
-        getRandomPost();
+        getPosts();
+       // getRandomPost();
+    }
+
+    private void initRecyclerView(){
+
+        Log.d(TAG, "initRecyclerView: init recyclerview.");
+        RecyclerView recyclerView = findViewById(R.id.recyclerv_view);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this,mNames,mImageUrls);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     private void getPosts(){
@@ -53,10 +70,10 @@ public class MainActivity extends AppCompatActivity {
                 for (Post post : all){
                     String content = "";
                     content += "Fact: " + post.getText()+"\n\n";
-
-                    textViewResult.append(content);
+                    mImageUrls.add("https://hrazanapad.cz/images/paw.png");
+                    mNames.add(content);
                 }
-
+                initRecyclerView();
             }
 
             @Override
