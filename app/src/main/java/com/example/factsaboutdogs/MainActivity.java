@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
                 for (Post post : all){
                     String content = "";
-                    content += "Fact: " + post.getText()+"\n\n";
+                    content += post.getText()+"\n\n";
                     mImageUrls.add("https://hrazanapad.cz/images/paw.png");
                     mNames.add(content);
                 }
