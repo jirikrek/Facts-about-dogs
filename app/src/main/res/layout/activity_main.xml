@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
 
     tools:context="com.example.factsaboutdogs.MainActivity"
     >
@@ -12,7 +12,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerv_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+
+
+
+        >
+
+
     </androidx.recyclerview.widget.RecyclerView>
     <TextView
         android:id="@+id/text_view_result"
@@ -20,10 +26,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textColor="#000"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+         />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        app:itemIconSize="30dp"
+        app:menu="@menu/bottom_navigation_menu"
+
+        />
+
 
 
 </RelativeLayout>
