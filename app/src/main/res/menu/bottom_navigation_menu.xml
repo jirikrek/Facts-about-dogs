@@ -6,7 +6,8 @@
         android:id="@+id/home_btn"
         android:enabled="true"
         android:icon="@drawable/ic_home"
-        android:title="" />
+        android:title=""
+       />
 
     <item
         android:id="@+id/list_btn"
