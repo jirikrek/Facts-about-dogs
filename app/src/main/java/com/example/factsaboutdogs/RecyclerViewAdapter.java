@@ -1,24 +1,30 @@
 package com.example.factsaboutdogs;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
-import androidx.lifecycle.GenericLifecycleObserver;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
@@ -60,7 +66,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: clicked on : "+mImageNames.get(position));
-                Toast.makeText(mContext,mImageNames.get(position),Toast.LENGTH_SHORT).show();
+
+
+
+
+                //Toast.makeText(mContext,mImageNames.get(position),Toast.LENGTH_SHORT).show();
+
+                final Intent intent;
+                intent =  new Intent(mContext, Popup.class);
+                intent.putExtra("context", mImageNames.get(position));
+                mContext.startActivity(intent);
+
             }
         });
 

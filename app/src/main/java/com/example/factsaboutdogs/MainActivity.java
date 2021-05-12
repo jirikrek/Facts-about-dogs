@@ -119,37 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void getRandomPost(){
 
-        Call<List<RandomPost>> call = jsonPlaceHolderApi.getRandomPost(24);
-
-        call.enqueue(new Callback<List<RandomPost>>() {
-            @Override
-            public void onResponse(Call<List<RandomPost>> call, Response<List<RandomPost>> response) {
-
-                if(!response.isSuccessful()) {
-                    textViewResult.setText("Code: " + response.code());
-                    return;
-                }
-
-                List<RandomPost> index = response.body();
-
-                for (RandomPost randomPost : index){
-                    String content = "";
-                    content += "Fact: " + randomPost.getText()+"\n\n";
-
-                    textViewResult.append(content);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<List<RandomPost>> call, Throwable t) {
-                textViewResult.setText(t.getMessage());
-            }
-        });
-
-    }
 
 
 
