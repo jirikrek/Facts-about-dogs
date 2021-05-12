@@ -14,8 +14,7 @@
         android:layout_height="wrap_content"
 
 
-
-        >
+        android:background="#CAEFED">
 
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -37,7 +36,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="138dp"
 
-        android:background="@color/white"
+        android:background="@android:color/holo_blue_dark"
         app:itemIconSize="30dp"
         app:menu="@menu/menu" />
 
