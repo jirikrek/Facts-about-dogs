@@ -1,28 +1,18 @@
 package com.example.factsaboutdogs;
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-
 import androidx.annotation.NonNull;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
-
-import java.io.Serializable;
 import java.util.ArrayList;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
